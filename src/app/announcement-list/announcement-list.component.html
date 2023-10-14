@@ -1,0 +1,13 @@
+
+<h1>Vip Announcements</h1>
+
+<app-announcement-list-item [ngClass]="{ 'selected': selectedAnnouncement?.id == item.id }" *ngFor="let item of vipAnnouncements;" [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
+
+<br />
+
+<h2>Regular announcements</h2>
+
+<app-announcement-list-item *ngFor="let item of regularAnnouncements;" [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
+
+<br />
+<button [disabled]="selectedAnnouncement == undefined" (click)="onDelete(selectedAnnouncement)">Delete selected</button>

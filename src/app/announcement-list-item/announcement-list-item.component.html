@@ -1,0 +1,17 @@
+<div class="tile" [ngClass]="getClass()">
+    <div class="tile__content">
+        <div class="title" [ngClass]="{ 'title--vip': announcement.isVip}">{{ announcement.title }}</div>
+        <div class="location">
+            <span *ngFor="let location of announcement.locations; last as isLast">
+                {{ location }} {{ isLast ? '' : ','}}
+            </span>
+        </div>
+    </div>
+    <div class="tile__buttons">
+        <div>
+            <button *ngIf="!isActive()" (click)="onActivate($event)">Activate</button>
+            <button *ngIf="isActive()" (click)="onDeactivate($event)">Deactivate</button>
+        </div>
+    </div>
+    
+</div>

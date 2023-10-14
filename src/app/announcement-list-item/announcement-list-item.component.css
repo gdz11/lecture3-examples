@@ -1,0 +1,48 @@
+
+
+.tile {
+    border: solid 2px;
+    border-radius: 10px;
+    padding: 10px;
+
+    display: flex;
+}
+
+.tile:hover:not(.tile--selected){
+    background-color: azure;
+}
+
+
+.tile--active{
+    border-color: lime;
+}
+
+.tile--deactivated {
+    border-color: red;
+}
+
+.tile__content {
+    flex: 1;
+}
+
+.tile__buttons {
+    width: 5rem;
+    align-self: center;
+}
+
+.tile--selected {
+    background-color: rgb(224, 255, 156);
+}
+
+.title {
+    font-weight: bold;
+}
+
+.title--vip {
+    font-size: 1.5rem;
+}
+
+.location {
+    padding-top: 0.5rem;
+    font-style: italic;
+}
