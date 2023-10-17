@@ -1,4 +1,8 @@
 
+/*
+BEM is used for css class naming and structuring
+https://getbem.com/
+*/
 
 .tile {
     border: solid 2px;
@@ -8,11 +12,16 @@
     display: flex;
 }
 
+/*
+avoid hovering background color change on currently selected item
+*/
 .tile:hover:not(.tile--selected){
     background-color: azure;
 }
 
-
+/*
+classes for changing border color based on announcement status
+*/
 .tile--active{
     border-color: lime;
 }
@@ -20,6 +29,17 @@
 .tile--deactivated {
     border-color: red;
 }
+
+/*
+class for hilighting selected annoncement
+*/
+.tile--selected {
+    background-color: rgb(224, 255, 156);
+}
+
+/*
+classes for layout
+*/
 
 .tile__content {
     flex: 1;
@@ -30,19 +50,18 @@
     align-self: center;
 }
 
-.tile--selected {
-    background-color: rgb(224, 255, 156);
-}
-
-.title {
+.tile__title {
     font-weight: bold;
 }
 
-.title--vip {
+/*
+class for increasing font-size for vip announcements
+*/
+.tile__title--vip {
     font-size: 1.5rem;
 }
 
-.location {
+.tile__location {
     padding-top: 0.5rem;
     font-style: italic;
 }
