@@ -8,6 +8,7 @@ import { AnnouncementListItemComponent } from './announcement-list-item/announce
 @NgModule({
   declarations: [
     AppComponent,
+    //our components are added to declarations array of our app module automatically ny ng cli
     AnnouncementListComponent,
     AnnouncementListItemComponent
   ],

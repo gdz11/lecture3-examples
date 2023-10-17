@@ -1,7 +1,25 @@
 
+<!--This component hosts list and some logic related to managing announcement list (select, delete)
+    All logic related to displayin one particular announcement is in announcement-list-item component.
+-->
+
 <h1>Vip Announcements</h1>
 
-<app-announcement-list-item [ngClass]="{ 'selected': selectedAnnouncement?.id == item.id }" *ngFor="let item of vipAnnouncements;" [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
+<!-- we use iur list item component for displaying one announcement
+    Because we have a list of announcements we place ngFor directive on list-item-component element in our template
+    we use inputs ([announcement] and [isSelected] for passing data to child component) we can use as many inputs as we need
+    isSelected is used to specify if currently this item is selected (by comparing stored selecteditem in component with item 
+    we are currently on)
+    We use output to subscribe to child compinent event (onStatusChange) and pass new status received from child component event via special $event variable
+    We have also click handler for updating currently selected item in a list (by updating selectedAnnouncement variable in our component)
+-->
+<app-announcement-list-item 
+*ngFor="let item of vipAnnouncements;" 
+[announcement]="item" 
+[isSelected]="item == selectedAnnouncement" 
+(onStatusChange)="onChange(item, $event)" 
+(click)="onSelect(item)">
+</app-announcement-list-item>
 
 <br />
 
@@ -10,4 +28,7 @@
 <app-announcement-list-item *ngFor="let item of regularAnnouncements;" [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
 
 <br />
+<!-- we used [disabled] binding to disable button when announcement is not selected
+    we use (click) event to bind button to our announcement delete event handler
+-->
 <button [disabled]="selectedAnnouncement == undefined" (click)="onDelete(selectedAnnouncement)">Delete selected</button>
