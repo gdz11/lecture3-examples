@@ -1,13 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Announcement, AnnouncementStatus } from '../announcement';
+import { CommonModule, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-announcement-list-item',
+  standalone: true,
+  imports: [NgClass],
   templateUrl: './announcement-list-item.component.html',
-  styleUrls: ['./announcement-list-item.component.css']
+  styleUrl: './announcement-list-item.component.css'
 })
 export class AnnouncementListItemComponent {
-
   //we use input to retrieve data from parent component
   //list-item component is dumb component, it does not retriev data itself from sevrer or other sources, it receives all data via inputs
   @Input() announcement!: Announcement;
@@ -61,4 +63,3 @@ export class AnnouncementListItemComponent {
   }
 
 }
-

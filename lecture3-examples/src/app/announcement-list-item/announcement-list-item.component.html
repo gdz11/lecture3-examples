@@ -1,0 +1,41 @@
+<!-- ngclass is used to apply css classes dynamically (for background color and border color.
+    we call function from our componen which contains all the logic and return object used by ngClass directive to determine what css classes to apply
+-->
+<div class="tile" [ngClass]="getClass()">
+    <div class="tile__content">
+        <!--we use ngclass for applying css class to change announcement title sisze based on its type
+            as there is no complex logic and we just use annnouncement property (isVip) we don't write seperate function for this
+            in component. Instead we specify rules inline (in template)
+        -->
+        <div class="tile__title" [ngClass]="{ 'tile__title--vip': announcement.isVip}">{{ announcement.title }}</div>
+        <div class="tile__location">
+            <!-- We use @for for displaying cities as a comma separated list.
+                We iterate over locations property of the announcement.
+                To avoid placing comma after last item of the list, we use special variable last that @for provodes for us.
+            -->
+            @for(location of announcement.locations; track location; let isLast = $last)
+            {
+                <span>
+                    <!-- if current item is the last one we don't place comma after it. Instead we displat empty string '' after displaying location-->
+                    {{ location }} {{ isLast ? '' : ','}} 
+                </span>
+            }
+        </div>
+    </div>
+    <div class="tile__buttons">
+        <div>
+            <!--we use @if to show only a single button at a time (deactivate when announcement is active and activate when it's deactivated)
+                We use function from our component in if expression to check if announcement is active
+            -->
+            @if(!isActive())
+            {
+                <button (click)="onActivate($event)">Activate</button><!-- $event is a dom event, we use it to stop bubbling of event (by calling stoppropagation)-->
+            }
+            @else if(isActive())
+            {
+                <button (click)="onDeactivate($event)">Deactivate</button>
+            }
+        </div>
+    </div>
+    
+</div>

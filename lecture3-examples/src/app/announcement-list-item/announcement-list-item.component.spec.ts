@@ -6,10 +6,12 @@ describe('AnnouncementListItemComponent', () => {
   let component: AnnouncementListItemComponent;
   let fixture: ComponentFixture<AnnouncementListItemComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [AnnouncementListItemComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AnnouncementListItemComponent]
+    })
+    .compileComponents();
+
     fixture = TestBed.createComponent(AnnouncementListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

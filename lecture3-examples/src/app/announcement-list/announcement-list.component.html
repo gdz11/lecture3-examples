@@ -13,20 +13,23 @@
     We use output to subscribe to child compinent event (onStatusChange) and pass new status received from child component event via special $event variable
     We have also click handler for updating currently selected item in a list (by updating selectedAnnouncement variable in our component)
 -->
-<app-announcement-list-item 
-*ngFor="let item of vipAnnouncements;" 
-[announcement]="item" 
-[isSelected]="item == selectedAnnouncement" 
-(onStatusChange)="onChange(item, $event)" 
-(click)="onSelect(item)">
-</app-announcement-list-item>
-
+@for(item of vipAnnouncements; track item.id)
+{
+    <app-announcement-list-item 
+    [announcement]="item" 
+    [isSelected]="item == selectedAnnouncement" 
+    (onStatusChange)="onChange(item, $event)" 
+    (click)="onSelect(item)">
+    </app-announcement-list-item>
+}
 <br />
 
 <h2>Regular announcements</h2>
 
-<app-announcement-list-item *ngFor="let item of regularAnnouncements;" [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
-
+@for(item of regularAnnouncements; track item.id)
+{
+    <app-announcement-list-item [announcement]="item" [isSelected]="item == selectedAnnouncement" (onStatusChange)="onChange(item, $event)" (click)="onSelect(item)"></app-announcement-list-item>
+}
 <br />
 <!-- we used [disabled] binding to disable button when announcement is not selected
     we use (click) event to bind button to our announcement delete event handler
